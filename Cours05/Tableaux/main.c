@@ -7,6 +7,7 @@ int main(void) {
     double notes[NOMBRE_ETUDIANTS_MAX];
     double somme;
     int nb_etudiants;
+    double meilleure_note;
 
     printf("Combien d'etudiant-e-s? ");
     scanf("%d", &nb_etudiants);
@@ -16,6 +17,8 @@ int main(void) {
         printf("Note de l'etudiant %i: ", i);
         scanf("%lf", &notes[i]);
     }
+
+
 
 //    notes[0] = 80;
 //    notes[1] = 87;
@@ -35,6 +38,17 @@ int main(void) {
         somme= somme + notes[i];
     }
     printf("La somme des notes est: %lf\n", somme);
+
+
+    meilleure_note = notes[0];
+    for(int i=1; i<nb_etudiants; i++)
+    {
+        if(notes[i] > meilleure_note)
+        {
+            meilleure_note = notes[i];
+        }
+    }
+    printf("La meilleure note est: %lf\n", meilleure_note);
 
     /*printf("La case 0 contient: %lf\n", notes[0]);
     printf("La case 1 contient: %lf\n", notes[1]);
