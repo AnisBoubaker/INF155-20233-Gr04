@@ -30,6 +30,7 @@ int main(void) {
     for(int i=0; i < nb_etudiants; i++)
     {
         printf("La note de l'etudiant %i est: %lf\n", i+1, notes[i]);
+        meilleure_note = notes[i];
     }
 
     somme = 0;
