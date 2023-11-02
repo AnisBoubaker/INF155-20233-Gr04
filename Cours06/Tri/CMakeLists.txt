@@ -3,4 +3,6 @@ project(Tri C)
 
 set(CMAKE_C_STANDARD 11)
 
-add_executable(Tri main.c)
+add_executable(Tri main.c
+        tri_tab1d.c
+        tri_tab1d.h)

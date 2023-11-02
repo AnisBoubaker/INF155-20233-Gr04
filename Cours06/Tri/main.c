@@ -1,33 +1,26 @@
 #include <stdio.h>
-
-void tri_insertion(int tab[], int taille);
+#include "tri_tab1d.h"
 
 int main() {
     int mon_tableau[] = {10, 45, 2, 26, 17, 56, 19, 20};
+    int mon_tableau2[] = {10, 45, 2, 26, 17, 56, 19, 20};
+    int mon_tableau3[] = {10, 45, 2, 26, 17, 56, 19, 20};
 
     tri_insertion(mon_tableau, 8);
+    afficher_tab(mon_tableau, 8);
 
-    for(int i=0; i<8; i++)
-    {
-        printf("%i ", mon_tableau[i]);
-    }
+    tri_selection(mon_tableau2, 8);
+    afficher_tab(mon_tableau2, 8);
+
+    tri_bulles(mon_tableau3, 8);
+    afficher_tab(mon_tableau3, 8);
 
     return 0;
 }
 
-void tri_insertion(int tab[], int taille)
-{
-    int x;
-    int j;
-    for(int i=1; i<taille; i++)
-    {
-        x = tab[i];
-        j = i;
-        while(j>0 && tab[j-1]>x)
-        {
-            tab[j] = tab[j-1];
-            j--;
-        }
-        tab[j] = x;
-    }
-}
+
+
+
+
+
+
