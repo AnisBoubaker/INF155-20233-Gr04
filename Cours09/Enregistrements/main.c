@@ -1,16 +1,10 @@
 #include <stdio.h>
+#include "t_lecture.h"
 
 //Crée un alias nommé "uint" pour le type existant "unsigned int"
 typedef unsigned int uint;
 
-typedef struct lecture{
-    double temperature;
-    double humidite;
-    double co2;
-    int jour;
-    int mois;
-    int annee;
-} t_lecture;
+
 
 //struct lecture
 //{
@@ -24,13 +18,13 @@ typedef struct lecture{
 //
 //typedef struct lecture t_lecture;
 
-void t_lecture_afficher(t_lecture lec);
 
 int main() {
     int age;
     //struct lecture lecture1;
     t_lecture lecture1;
     t_lecture lecture2;
+    t_lecture tab_lectures[100];
 
     lecture1.temperature = 25.5;
     lecture1.humidite = 40.5;
@@ -46,18 +40,34 @@ int main() {
     lecture2.mois = 11;
     lecture2.annee = 2023;
 
-    t_lecture_afficher(lecture1);
-    t_lecture_afficher(lecture2);
+    t_lecture_afficher(&lecture1);
+
+    printf("Valeur de humidite après affichage: %.2lf\n", lecture1.humidite);
+
+    t_lecture_afficher(&lecture2);
+
+    tab_lectures[0].temperature = 25.5;
+    tab_lectures[0].humidite = 40.5;
+    tab_lectures[0].co2 = 10.5;
+    tab_lectures[0].jour = 16;
+    tab_lectures[0].mois = 11;
+    tab_lectures[0].annee = 2023;
+
+    tab_lectures[1].temperature = 23.2;
+    tab_lectures[1].humidite = 45.0;
+    tab_lectures[1].co2 = 13.5;
+    tab_lectures[1].jour = 15;
+    tab_lectures[1].mois = 11;
+    tab_lectures[1].annee = 2023;
+
+    printf("Moyenne: %.2lf\n", t_lecture_moyenne_temps(tab_lectures, 2) );
+
 
     return 0;
 }
 
-void t_lecture_afficher(t_lecture lec)
-{
-    printf("Date: %i/%i/%i\n", lec.jour, lec.mois, lec.annee);
-    printf("Temperature: %.2lf, Humidite: %.2lf, CO2: %.2lf\n",
-           lec.temperature, lec.humidite, lec.co2);
-}
+
+
 
 
 
