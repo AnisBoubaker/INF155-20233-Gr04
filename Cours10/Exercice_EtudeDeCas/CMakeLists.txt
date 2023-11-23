@@ -5,4 +5,6 @@ set(CMAKE_C_STANDARD 11)
 
 add_executable(Exercice_EtudeDeCas main.c
         t_date.c
-        t_date.h)
+        t_date.h
+        t_machine.c
+        t_machine.h)
