@@ -78,3 +78,48 @@ void machine_jeu_machines(t_machine* machines[], int nb)
         date_set_date(&(machines[i]->date_maintenance), nb_aleatoire(1, 28), nb_aleatoire(1, 12), 2023);
     }
 }
+
+t_machine** machines_a_maintenir(t_machine* liste_machines[],
+                                 int nb_machines,
+                                 t_date date_min,
+                                 int* nb_a_maintenir)
+{
+    t_machine** a_maintenir;
+    t_machine** tmp; //Adresse temproraire pour la reallocation
+    *nb_a_maintenir = 0;
+
+    a_maintenir = (t_machine**)malloc(sizeof(t_machine*) * nb_machines);
+    if(a_maintenir == NULL)
+    {
+        return NULL;
+    }
+    for(int i=0; i<nb_machines; i++)
+    {
+        if(date_cmp( liste_machines[i]->date_maintenance, date_min ) < 0)
+        {
+            a_maintenir[ *nb_a_maintenir ] = liste_machines[i];
+            (*nb_a_maintenir)++;
+        }
+    }
+
+    tmp = (t_machine**)realloc(a_maintenir, sizeof(t_machine*)* *nb_a_maintenir);
+    if(tmp == NULL)
+    {
+        return a_maintenir;
+    }
+    a_maintenir = tmp;
+
+    return a_maintenir;
+}
+
+
+
+
+
+
+
+
+
+
+
+
