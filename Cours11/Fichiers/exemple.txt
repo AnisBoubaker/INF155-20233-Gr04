@@ -1,0 +1,6 @@
+150
+Bonjour le monde!
+Ceci est l'avant dernier cours de INF155!
+Lundi
+Mardi
+Mercredi
