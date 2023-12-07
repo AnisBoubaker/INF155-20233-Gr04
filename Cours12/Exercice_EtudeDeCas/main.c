@@ -11,16 +11,20 @@ int main() {
     //Crée 50 machines de façon aléatoire
     machine_jeu_machines(machines, 50);
 
-    tab2d = machine_classer_categories(machines, 50);
+    machine_sauvegarder_machines(machines, 50, "../sauvegarde.txt");
 
-    for(int i=0; i<NB_CATEGORIES; i++)
-    {
-        printf("\n\n####### MACHINES DE LA CATEGORIE %i #########\n", i+1);
-        for(int j=0; tab2d[i][j]!= NULL ; j++)
-        {
-            machine_afficher(tab2d[i][j]);
-        }
-    }
+
+
+//    tab2d = machine_classer_categories(machines, 50);
+//
+//    for(int i=0; i<NB_CATEGORIES; i++)
+//    {
+//        printf("\n\n####### MACHINES DE LA CATEGORIE %i #########\n", i+1);
+//        for(int j=0; tab2d[i][j]!= NULL ; j++)
+//        {
+//            machine_afficher(tab2d[i][j]);
+//        }
+//    }
 
     return 0;
 }

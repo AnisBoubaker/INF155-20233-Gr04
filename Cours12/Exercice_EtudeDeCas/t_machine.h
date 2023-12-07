@@ -78,4 +78,10 @@ t_machine** machines_a_maintenir(t_machine* liste_machines[],
  */
 t_machine_ptr** machine_classer_categories(t_machine_ptr machines[], int taille);
 
+
+/*
+ *
+ */
+int machine_sauvegarder_machines(t_machine* machines[], int nb, char* nom_fichier);
+
 #endif //EXERCICE_ETUDEDECAS_T_MACHINE_H
