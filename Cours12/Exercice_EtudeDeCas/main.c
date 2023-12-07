@@ -5,13 +5,23 @@
 #define TAILLE_MAX 100
 
 int main() {
-    t_machine_ptr machines[100];
-    t_machine_ptr** tab2d;
 
-    //Crée 50 machines de façon aléatoire
-    machine_jeu_machines(machines, 50);
+    int nb_machines;
+    t_machine_ptr* liste_machines;
+    liste_machines = machine_charger_machines("../sauvegarde.txt", &nb_machines);
 
-    machine_sauvegarder_machines(machines, 50, "../sauvegarde.txt");
+    for(int i=0; i<nb_machines; i++)
+    {
+        machine_afficher(liste_machines[i]);
+    }
+
+//    t_machine_ptr machines[100];
+//    t_machine_ptr** tab2d;
+//
+//    //Crée 50 machines de façon aléatoire
+//    machine_jeu_machines(machines, 50);
+//
+//    machine_sauvegarder_machines(machines, 50, "../sauvegarde.txt");
 
 
 

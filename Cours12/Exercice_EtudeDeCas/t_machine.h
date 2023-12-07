@@ -84,4 +84,15 @@ t_machine_ptr** machine_classer_categories(t_machine_ptr machines[], int taille)
  */
 int machine_sauvegarder_machines(t_machine* machines[], int nb, char* nom_fichier);
 
+/*
+ *
+ */
+t_machine_ptr* machine_charger_machines(const char* nom_fichier, int* taille);
+
+
+
+
+
+
+
 #endif //EXERCICE_ETUDEDECAS_T_MACHINE_H
