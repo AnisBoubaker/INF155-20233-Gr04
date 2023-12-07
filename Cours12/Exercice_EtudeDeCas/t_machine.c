@@ -76,6 +76,7 @@ void machine_jeu_machines(t_machine* machines[], int nb)
         machines[i] = machine_init(i, num_modele);
         date_set_date(&(machines[i]->date_mise_service), nb_aleatoire(1, 28), nb_aleatoire(1, 12), 2023);
         date_set_date(&(machines[i]->date_maintenance), nb_aleatoire(1, 28), nb_aleatoire(1, 12), 2023);
+        machines[i]->categorie = nb_aleatoire(0, NB_CATEGORIES-1);
     }
 }
 
@@ -111,6 +112,55 @@ t_machine** machines_a_maintenir(t_machine* liste_machines[],
 
     return a_maintenir;
 }
+
+t_machine_ptr** machine_classer_categories(t_machine_ptr machines[], int taille)
+{
+    t_machine_ptr** tab2d;
+    int compteurs[NB_CATEGORIES] = {0};
+
+    tab2d = (t_machine_ptr**)malloc(sizeof(t_machine_ptr*)*NB_CATEGORIES);
+    if(tab2d == NULL)
+    {
+        return NULL;
+    }
+
+    for(int i=0; i<NB_CATEGORIES; i++)
+    {
+        tab2d[i] = (t_machine_ptr*)calloc(sizeof(t_machine_ptr), 100);
+        if(tab2d[i]==NULL)
+        {
+            for(int j=0; j<i; j++)
+            {
+                free(tab2d[j]);
+            }
+            free(tab2d);
+            return NULL;
+        }
+    }
+
+    for(int i=0; i<taille; i++)
+    {
+        int ligne, colonne;
+        ligne = machines[i]->categorie;
+        colonne = compteurs[ machines[i]->categorie ];
+        tab2d[ligne][colonne] = machines[i];
+        //On incrémente le compteur de la catégorie de la machine qu'on vient
+        //de placer.
+        compteurs[ machines[i]->categorie ] ++;
+    }
+
+
+    return tab2d;
+}
+
+
+
+
+
+
+
+
+
 
 
 

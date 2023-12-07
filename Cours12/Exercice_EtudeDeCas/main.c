@@ -5,28 +5,22 @@
 #define TAILLE_MAX 100
 
 int main() {
-    t_machine* mes_machines[TAILLE_MAX];
-    t_machine** a_maintenir;
-    t_date date_seuil;
-    int nb_a_maintenir;
+    t_machine_ptr machines[100];
+    t_machine_ptr** tab2d;
 
-    //On crée un ensemble de 50 machines aléatoirement
-    machine_jeu_machines(mes_machines, 50);
+    //Crée 50 machines de façon aléatoire
+    machine_jeu_machines(machines, 50);
 
-    //On définit la valeur de la date seuil
-    date_set_date(&date_seuil, 1, JUILLET, 2023);
+    tab2d = machine_classer_categories(machines, 50);
 
-    a_maintenir = machines_a_maintenir(mes_machines, 50, date_seuil, &nb_a_maintenir);
-    for(int i=0; i< nb_a_maintenir; i++)
+    for(int i=0; i<NB_CATEGORIES; i++)
     {
-        machine_afficher(a_maintenir[i]);
+        printf("\n\n####### MACHINES DE LA CATEGORIE %i #########\n", i+1);
+        for(int j=0; tab2d[i][j]!= NULL ; j++)
+        {
+            machine_afficher(tab2d[i][j]);
+        }
     }
-
-
-//    for(int i=0; i<50; i++)
-//    {
-//        machine_afficher(mes_machines[i]);
-//    }
 
     return 0;
 }

@@ -10,6 +10,8 @@
 #include <stdio.h>
 #include "t_date.h"
 
+#define NB_CATEGORIES 5
+
 typedef enum categorie {CAT1, CAT2, CAT3, CAT4, CAT5} e_categorie;
 
 typedef struct t_machine {
@@ -19,6 +21,8 @@ typedef struct t_machine {
     t_date date_mise_service;
     t_date date_maintenance;
 } t_machine;
+
+typedef t_machine* t_machine_ptr;
 
 /*
 Alloue et initialise une nouvelle machine. Le numéro de la machine et
@@ -68,5 +72,10 @@ t_machine** machines_a_maintenir(t_machine* liste_machines[],
                                  t_date date_min,
                                  int* nb_a_maintenir);
 
+
+/*
+ *
+ */
+t_machine_ptr** machine_classer_categories(t_machine_ptr machines[], int taille);
 
 #endif //EXERCICE_ETUDEDECAS_T_MACHINE_H
